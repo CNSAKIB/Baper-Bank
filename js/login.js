@@ -12,6 +12,6 @@ document.getElementById('submit').addEventListener('click', function () {
         window.location.href = 'dashboard.html';
     }
     else {
-        window.alert('mail and pass didnt matched');
+        window.alert('Mail and Password did not matched');
     }
 })
