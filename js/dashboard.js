@@ -7,15 +7,22 @@ document.getElementById('depo-button').addEventListener('click', function () {
     const depoAmountDisplay = document.getElementById('depo-amount');
 
     // Calculating total depo 
-    const totalDepo = parseFloat(depoAmountDisplay.innerText) + depoAmount;
-    depoAmountDisplay.innerText = totalDepo;
-    depoAmountFeild.value = '';
+    if (depoAmount > 0) {
+        const totalDepo = parseFloat(depoAmountDisplay.innerText) + depoAmount;
+        depoAmountDisplay.innerText = totalDepo;
+        depoAmountFeild.value = '';
+        //Calculating Total balance
 
-    //Calculating Total balance
+        const totalAmount = document.getElementById('total-amount');
+        const totalAmountDisplay = parseFloat(totalAmount.innerText) + depoAmount;
+        totalAmount.innerText = totalAmountDisplay;
+    }
+    else {
+        window.alert('Invalid Input');
+    }
 
-    const totalAmount = document.getElementById('total-amount');
-    const totalAmountDisplay = parseFloat(totalAmount.innerText) + depoAmount;
-    totalAmount.innerText = totalAmountDisplay;
+
+
 
 })
 
@@ -29,14 +36,26 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     const withdrawDisplay = document.getElementById('withdraw-amount');
 
     // calculting total withdraw 
-    const totalWithdraw = parseFloat(withdrawDisplay.innerText) + withDrawAmount;
-    withdrawDisplay.innerText = totalWithdraw;
-    withDrawFeild.value = '';
+    if (withDrawAmount > 0) {
+        const totalWithdraw = parseFloat(withdrawDisplay.innerText) + withDrawAmount;
+        withdrawDisplay.innerText = totalWithdraw;
+        withDrawFeild.value = '';
 
-    //Calculating total Balance
+        //Calculating total Balance
 
-    const totalAmount = document.getElementById('total-amount');
-    const totalAmountDisplay = parseFloat(totalAmount.innerText) - withDrawAmount;
-    totalAmount.innerText = totalAmountDisplay;
+        const totalAmount = document.getElementById('total-amount');
+        const totalAmountDisplay = parseFloat(totalAmount.innerText) - withDrawAmount;
+        if (totalAmountDisplay < 0) {
+            window.alert('You cannot withdraw more than your total balance')
+        }
+        else {
+            totalAmount.innerText = totalAmountDisplay;
+        }
+
+
+    }
+    else {
+        window.alert('Invalid Input');
+    }
 
 })
